@@ -1,0 +1,20 @@
+name = "kra-sandbox"
+base_url = "https://developer.go.ke/apis"
+endpoint = "/v1/returns"
+method = "POST"
+
+[limits]
+concurrency = 2
+rate_per_sec = 1
+request_budget = 400
+max_rate_per_sec = 5
+allowed_methods = ["GET", "POST"]
+
+[timeouts]
+connect_ms = 3000
+read_ms = 5000
+
+[safety]
+require_sandbox_flag = true
+allowlist_hosts = ["sanbox.example.kra.ke"]
+force_headers = { X-Env = "sandbox", X-Fuzzkit = "true" }
